@@ -10,4 +10,16 @@ class Stack
   def initialize
     @operands = []
   end
+
+  def push(operand)
+    operands.push(operand)
+  end
+
+  def clear
+    operands.clear
+  end
+
+  def pop(quantity)
+    operands.pop(quantity)
+  end
 end
