@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-%w[stack input_type].map { |file| require_relative file }
+%w[stack input_type error].map { |file| require_relative file }
 
 ## The main driver of the application. This is separated from the class that
 ## drives the CLI for the RPN Calculator. This is the entry point through
@@ -17,11 +17,12 @@ class Calculator
   def parse_input(input_string)
     case input_string
     when InputType::ValidOperand
-      stack.push(input_string)
+      stack.push(convert_input(input_string))
     when InputType::ValidOperator
       ## execute_operation method will be called here
       'valid'
     else
+      raise InputError, 'Invalid string input'
     end
   end
 
