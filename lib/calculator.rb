@@ -28,4 +28,12 @@ class Calculator
   private
 
   attr_reader :stack
+
+  ## Checks if the given number string is either an integer or a float, and
+  ## converts the number string to the given type.
+  # @params [String]
+  # @return [Float/Integer]
+  def convert_input(number_string)
+    (number_string.to_f % 1.0).zero? ? number_string.to_i : number_string.to_f
+  end
 end
