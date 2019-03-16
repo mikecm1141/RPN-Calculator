@@ -10,4 +10,18 @@ class Calculator
   def initialize
     @stack = Stack.new
   end
+
+  ## Drives the calculator through user input provided via this method.
+  # @params [String] -> ex. '1', '2.3', '-1', '-30.335'
+  # @return [Float/Integer]
+  def parse_input(input_string)
+    case input_string
+    when InputType::ValidOperand
+      stack.push(input_string)
+    end
+  end
+
+  private
+
+  attr_reader :stack
 end
