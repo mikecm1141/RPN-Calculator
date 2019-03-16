@@ -18,6 +18,12 @@ describe Calculator do
         expect(subject.parse_input('2.3')).to be_truthy
         expect(subject.parse_input('-3')).to be_truthy
       end
+      it 'parses the input string for given operation' do
+        expect(subject.parse_input('+')).to be_truthy
+        expect(subject.parse_input('-')).to be_truthy
+        expect(subject.parse_input('/')).to be_truthy
+        expect(subject.parse_input('*')).to be_truthy
+      end
     end
   end
 end

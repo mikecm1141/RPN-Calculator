@@ -18,6 +18,10 @@ class Calculator
     case input_string
     when InputType::ValidOperand
       stack.push(input_string)
+    when InputType::ValidOperator
+      ## execute_operation method will be called here
+      'valid'
+    else
     end
   end
 
