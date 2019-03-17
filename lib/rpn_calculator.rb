@@ -3,11 +3,13 @@
 require_relative 'calculator'
 
 class RpnCalculator
+  MENU_COMMANDS = %w[q v c z].freeze
+
   def self.run
     loop do
       print rpnc.prompt
       user_input = STDIN.gets.chomp.downcase
-      if user_input.match?(/(v|q|c|z)/)
+      if MENU_COMMANDS.include?(user_input)
         rpnc.menu_options[user_input.to_sym].call
         next
       end
