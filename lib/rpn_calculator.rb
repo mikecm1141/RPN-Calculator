@@ -7,9 +7,10 @@ class RpnCalculator
     loop do
       print rpnc.prompt
       user_input = STDIN.gets.chomp.downcase
+
       if user_input == 'q'
-        puts 'Terminating application, goodbye'
-        exit
+        rpnc.menu_options[user_input.to_sym].call
+        next
       end
 
       p rpnc.parse_input(user_input)
@@ -28,6 +29,17 @@ class RpnCalculator
   def initialize
     @calculator = Calculator.new
     puts header
+  end
+
+  def menu_options
+    {
+      q: method(:option_quit_program)
+    }
+  end
+
+  def option_quit_program
+    puts "\s\sTerminating application"
+    exit
   end
 
   def header
