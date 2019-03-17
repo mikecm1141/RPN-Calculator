@@ -19,9 +19,17 @@ class Calculator
     stack.clear
   end
 
+  ## Removes the last pushed operand from the stack. Raises a StateError if
+  ## there are no operands to remove from the stack.
+  def undo_last
+    raise StateError, 'Stack is empty' if stack.size == 0
+
+    stack.pop
+  end
+
   ## Drives the calculator through user input provided via this method.
   # @params [String] -> ex. '1', '2.3', '-1', '-30.335'
-  # @return [Float/Integer]
+  # @return [Case 1: [Array], Case 2: [Float/Integer]
   def parse_input(input_string)
     case input_string
     when InputType::ValidOperand
