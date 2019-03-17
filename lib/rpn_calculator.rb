@@ -13,9 +13,7 @@ class RpnCalculator
         next
       end
 
-      p rpnc.parse_input(user_input)
-
-      p rpnc.send_input(user_input)
+      rpnc.calc_print(rpnc.send_input(user_input))
     rescue StandardError => e
       puts "\s\sError: #{e.message}"
     end
@@ -35,6 +33,11 @@ class RpnCalculator
   def send_input(input_string)
     calculator.parse_input(input_string)
   end
+
+  def calc_print(result)
+    puts equals + result.to_s unless result.is_a?(Array)
+  end
+
   def menu_options
     {
       q: method(:option_quit_program)
@@ -62,5 +65,9 @@ class RpnCalculator
 
   def prompt
     '$:> '
+  end
+
+  def equals
+    "\s\s= "
   end
 end
