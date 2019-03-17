@@ -19,8 +19,7 @@ class Calculator
     when InputType::ValidOperand
       stack.push(convert_input(input_string))
     when InputType::ValidOperator
-      ## execute_operation method will be called here
-      'valid'
+      execute_operation(input_string)
     else
       raise InputError, 'Invalid string input'
     end
@@ -30,8 +29,18 @@ class Calculator
 
   attr_reader :stack
 
-  def execute_operation
+  ## When an operator is given to #parse_input, this method will run the
+  ## given calculation. Raises error if somehow an invalid operator is passed
+  ## into this method.
+  # @params [String]
+  # @return [Float/Integer]
+  def execute_operation(input_string)
+    action = input_string[InputType::ValidOperator::OPERATORS].to_sym
+    raise OperationError, 'Invalid operator' unless operator.respond_to?(action)
 
+    result = operator.send(action, stack)
+    stack.push(result)
+    result
   end
 
   ## This doesn't need to be instantiated more than one time, so I have
