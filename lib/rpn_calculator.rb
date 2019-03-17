@@ -8,7 +8,7 @@ class RpnCalculator
       print rpnc.prompt
       user_input = STDIN.gets.chomp.downcase
 
-      if user_input == 'q'
+      if user_input.match?(/(v|q)/)
         rpnc.menu_options[user_input.to_sym].call
         next
       end
@@ -40,13 +40,19 @@ class RpnCalculator
 
   def menu_options
     {
-      q: method(:option_quit_program)
+      q: method(:option_quit_program),
+      v: method(:option_print_stack)
     }
   end
 
   def option_quit_program
-    puts "\s\sTerminating application"
+    puts "\s\sTerminating application, goodbye."
     exit
+  end
+
+  def option_print_stack
+    print "\s\sCurrent Operand Stack: "
+    p calculator.current_stack
   end
 
   def header

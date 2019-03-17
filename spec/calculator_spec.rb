@@ -12,6 +12,14 @@ describe Calculator do
   end
 
   describe 'Instance Methods' do
+    context '#current_stack' do
+      it 'returns the current operands in the stack' do
+        subject.parse_input('1')
+        subject.parse_input('2')
+        expect(subject.current_stack).to eq([1, 2])
+      end
+    end
+
     context '#parse_input(input_string)' do
       context 'passing in an operand' do
         it 'parses the input string to add operands to the stack' do
