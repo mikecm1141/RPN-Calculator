@@ -2,3 +2,4 @@
 
 class InputError < StandardError; end
 class StateError < StandardError; end
+class OperationError < StandardError; end
