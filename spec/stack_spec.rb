@@ -32,6 +32,14 @@ describe Stack do
       end
     end
 
+    context '#size' do
+      it 'returns the size of the stack' do
+        subject.push(2)
+        subject.push(3)
+        expect(subject.size).to eq 2
+      end
+    end
+
     context '#pop(quantity)' do
       it 'pops the given amount of operands off the stack' do
         subject.push(2)

@@ -22,4 +22,8 @@ class Stack
   def pop(quantity)
     operands.pop(quantity)
   end
+
+  def size
+    operands.size
+  end
 end
