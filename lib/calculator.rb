@@ -22,7 +22,7 @@ class Calculator
   ## Removes the last pushed operand from the stack. Raises a StateError if
   ## there are no operands to remove from the stack.
   def undo_last
-    raise StateError, 'Stack is empty' if stack.size == 0
+    raise StateError, 'Stack is empty' if stack.size.zero?
 
     stack.pop
   end
