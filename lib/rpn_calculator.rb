@@ -4,8 +4,34 @@ require_relative 'calculator'
 
 class RpnCalculator
   def self.run
-    calculator = Calculator.new
-    puts <<-HEADERMSG
+    loop do
+      print rpnc.prompt
+      user_input = STDIN.gets.chomp.downcase
+      if user_input == 'q'
+        puts 'Terminating application, goodbye'
+        exit
+      end
+
+      p rpnc.parse_input(user_input)
+
+    rescue StandardError => e
+      puts "\s\sError: #{e.message}"
+    end
+  end
+
+  def self.rpnc
+    @rpnc ||= RpnCalculator.new
+  end
+
+  attr_reader :calculator
+
+  def initialize
+    @calculator = Calculator.new
+    puts header
+  end
+
+  def header
+    <<-HEADERMSG
 
     Welcome to the RPN calculator. See the README for more information on
     proper usage of this application.
@@ -16,18 +42,9 @@ class RpnCalculator
     Enter 'q' to quit the application.
 
     HEADERMSG
-    loop do
-      print '$:> '
-      user_input = STDIN.gets.chomp.downcase
-      if user_input == 'q'
-        puts 'Terminating application, goodbye'
-        exit
-      end
+  end
 
-      p calculator.parse_input(user_input)
-
-    rescue StandardError => e
-      puts "\s\sError: #{e.message}"
-    end
+  def prompt
+    '$:> '
   end
 end
