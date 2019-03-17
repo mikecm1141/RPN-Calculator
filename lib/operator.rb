@@ -28,6 +28,14 @@ class Operator
     a * b
   end
 
+  def /(stack)
+    valid_state?(stack)
+    raise OperationError, 'Divisor cannot be zero' if stack.last.zero?
+    a, b = stack.pop(2)
+    result = a / b
+    (result % 1.0).zero? ? result.to_i : result.to_f
+  end
+
   private
 
   def valid_state?(stack)
