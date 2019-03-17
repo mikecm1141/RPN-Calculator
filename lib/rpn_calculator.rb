@@ -15,6 +15,7 @@ class RpnCalculator
 
       p rpnc.parse_input(user_input)
 
+      p rpnc.send_input(user_input)
     rescue StandardError => e
       puts "\s\sError: #{e.message}"
     end
@@ -31,6 +32,9 @@ class RpnCalculator
     puts header
   end
 
+  def send_input(input_string)
+    calculator.parse_input(input_string)
+  end
   def menu_options
     {
       q: method(:option_quit_program)
