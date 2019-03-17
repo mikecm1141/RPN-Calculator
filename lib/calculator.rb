@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-%w[stack input_type error].map { |file| require_relative file }
+%w[stack input_type error operator].map { |file| require_relative file }
 
 ## The main driver of the application. This is separated from the class that
 ## drives the CLI for the RPN Calculator. This is the entry point through
@@ -29,6 +29,17 @@ class Calculator
   private
 
   attr_reader :stack
+
+  def execute_operation
+
+  end
+
+  ## This doesn't need to be instantiated more than one time, so I have
+  ## memoized it here in order to make sure that it is only done initially upon
+  ## first use.
+  def operator
+    @operator ||= Operator.new
+  end
 
   ## Checks if the given number string is either an integer or a float, and
   ## converts the number string to the given type.
