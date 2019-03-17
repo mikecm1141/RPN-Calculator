@@ -20,6 +20,15 @@ describe Calculator do
       end
     end
 
+    context '#clear_stack' do
+      it 'returns the current operands in the stack' do
+        subject.parse_input('1')
+        subject.parse_input('2')
+        subject.clear_stack
+        expect(subject.current_stack).to be_empty
+      end
+    end
+
     context '#parse_input(input_string)' do
       context 'passing in an operand' do
         it 'parses the input string to add operands to the stack' do

@@ -15,6 +15,10 @@ class Calculator
     stack.operands
   end
 
+  def clear_stack
+    stack.clear
+  end
+
   ## Drives the calculator through user input provided via this method.
   # @params [String] -> ex. '1', '2.3', '-1', '-30.335'
   # @return [Float/Integer]
