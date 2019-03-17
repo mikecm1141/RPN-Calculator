@@ -25,6 +25,9 @@ class RpnCalculator
       end
 
       p calculator.parse_input(user_input)
+
+    rescue StandardError => e
+      puts "\s\sError: #{e.message}"
     end
   end
 end
