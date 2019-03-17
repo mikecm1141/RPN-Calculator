@@ -51,7 +51,7 @@ class Calculator
   # @params [String]
   # @return [Float/Integer]
   def execute_operation(input_string)
-    action = input_string[InputType::ValidOperator::OPERATORS].to_sym
+    action = input_string.to_sym
     raise OperationError, 'Invalid operator' unless operator.respond_to?(action)
 
     result = operator.send(action, stack)

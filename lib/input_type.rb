@@ -13,10 +13,10 @@ module InputType
 
   ## Checks the given input to see if it is a valid operation.
   class ValidOperator
-    OPERATORS = %r{(\+|\-|\*|\/)}.freeze
+    OPERATORS = %w[+ - * /].freeze
 
     def self.===(input)
-      input =~ OPERATORS
+      OPERATORS.include?(input)
     end
   end
 end
