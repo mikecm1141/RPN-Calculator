@@ -27,7 +27,7 @@ describe Calculator do
       end
 
       it 'raises error if given string is not valid at all' do
-        expect{ subject.parse_input('text') }
+        expect { subject.parse_input('text') }
           .to raise_error(InputError, 'Invalid string input')
       end
     end
