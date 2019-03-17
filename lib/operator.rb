@@ -25,7 +25,7 @@ class Operator
     a - b
   end
 
-  ## Takes the stack and multiplies the last two elements. 
+  ## Takes the stack and multiplies the last two elements.
   # @params [Stack]
   # @return [Float/Integer]
   def *(stack)
@@ -44,6 +44,7 @@ class Operator
   def /(stack)
     valid_state?(stack)
     raise OperationError, 'Divisor cannot be zero' if stack.last.zero?
+
     a, b = stack.pop(2).map(&:to_f)
     result = a / b
     (result % 1.0).zero? ? result.to_i : result.to_f
