@@ -28,5 +28,19 @@ describe Operator do
           )
       end
     end
+
+    context '#-(values)' do
+      it 'takes stack values as input and subtracts last two values' do
+        expect(subject.-(@stack)).to eq(-12.5)
+      end
+
+      it 'raises an error if stack size is too small for operation' do
+        @stack.pop(2)
+        expect { subject.-(@stack) }
+          .to raise_error(
+            StateError, 'Stack must have at least 2 operands for operation'
+          )
+      end
+    end
   end
 end
