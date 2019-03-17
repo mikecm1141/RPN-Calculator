@@ -22,6 +22,12 @@ class Operator
     a - b
   end
 
+  def *(stack)
+    valid_state?(stack)
+    a, b = stack.pop(2)
+    a * b
+  end
+
   private
 
   def valid_state?(stack)
