@@ -36,7 +36,7 @@ describe Stack do
       it 'returns the size of the stack' do
         subject.push(2)
         subject.push(3)
-        expect(subject.size).to eq 2
+        expect(subject.size).to eq(2)
       end
     end
 
@@ -46,6 +46,15 @@ describe Stack do
         subject.push(5)
 
         expect(subject.pop(2)).to eq([2, 5])
+      end
+    end
+
+    context '#last' do
+      it 'returns the last item in the stack' do
+        subject.push(2)
+        subject.push(5)
+
+        expect(subject.last).to eq(5)
       end
     end
   end

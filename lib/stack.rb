@@ -26,4 +26,8 @@ class Stack
   def size
     operands.size
   end
+
+  def last
+    operands.last
+  end
 end
