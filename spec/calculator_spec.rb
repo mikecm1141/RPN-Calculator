@@ -12,6 +12,37 @@ describe Calculator do
   end
 
   describe 'Instance Methods' do
+    context '#current_stack' do
+      it 'returns the current operands in the stack' do
+        subject.parse_input('1')
+        subject.parse_input('2')
+        expect(subject.current_stack).to eq([1, 2])
+      end
+    end
+
+    context '#clear_stack' do
+      it 'returns the current operands in the stack' do
+        subject.parse_input('1')
+        subject.parse_input('2')
+        subject.clear_stack
+        expect(subject.current_stack).to be_empty
+      end
+    end
+
+    context '#undo_last' do
+      it 'removes the last operand from the stack' do
+        subject.parse_input('1')
+        subject.parse_input('2')
+        subject.undo_last
+        expect(subject.current_stack).to eq([1])
+      end
+
+      it 'raises an error if stack has no operands to remove' do
+        expect { subject.undo_last }
+          .to raise_error StateError, 'Stack is empty'
+      end
+    end
+
     context '#parse_input(input_string)' do
       context 'passing in an operand' do
         it 'parses the input string to add operands to the stack' do

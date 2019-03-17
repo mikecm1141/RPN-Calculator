@@ -19,7 +19,7 @@ class Stack
     operands.clear
   end
 
-  def pop(quantity)
+  def pop(quantity = 1)
     operands.pop(quantity)
   end
 
