@@ -2,7 +2,6 @@
 
 require_relative 'calculator'
 
-## CLI for the Calculator class.
 class RpnCalculator
   MENU_COMMANDS = %w[q v c z].freeze
 
@@ -32,15 +31,10 @@ class RpnCalculator
     puts header
   end
 
-  ## Sends the input to the calculator for parsing.
-  # @params [String]
   def send_input(input_string)
     calculator.parse_input(input_string)
   end
 
-  ## Prints to the screen if the result of parsing user input results in a
-  ## calculation.
-  # @params [Float/Integer]
   def calc_print(result)
     puts equals + result.to_s unless result.is_a?(Array)
   end
